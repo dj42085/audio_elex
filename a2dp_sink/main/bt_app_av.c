@@ -564,7 +564,7 @@ static void bt_av_hdl_avrc_tg_evt(uint16_t event, void *p_param)
                  rc->conn_stat.connected, bda[0], bda[1], bda[2], bda[3], bda[4], bda[5]);
         if (rc->conn_stat.connected) {
             /* create task to simulate volume change */
-            xTaskCreate(volume_change_simulation, "vcsTask", 2048, NULL, 5, &s_vcs_task_hdl);
+//            xTaskCreate(volume_change_simulation, "vcsTask", 2048, NULL, 5, &s_vcs_task_hdl);
         } else {
             vTaskDelete(s_vcs_task_hdl);
             ESP_LOGI(BT_RC_TG_TAG, "Stop volume change simulation");
