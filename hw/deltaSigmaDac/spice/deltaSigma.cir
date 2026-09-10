@@ -1,0 +1,27 @@
+* This is an example of a sine stimulus from a first order delta sigma modulator.
+.model comparator dac_bridge(out_low = -2.5 out_high = 2.5) 
+*athresh_comparator [%vd threshold control] [over_threshold] comparator
+asinestim [dac_out] [drv_out] comparator
+
+* A tiny Verilog module handles the deltaSigma dac and test bench.
+.model vlog_ds d_cosim simulation="ivlng" sim_args=["sine_stim_test"]
+averilog null [ dac_out ] vlog_ds
+
+* output rc filter
+Rf drv_out filt_out 1k
+cout filt_out 0 8n
+.end
+
+.control
+tran 10n 2m uic
+*fourier v(filt_out) 2k
+plot dac_out-5 drv_out-10 filt_out
+*linearize v(filt_out)
+linearize v(drv_out)
+set specwindow=blackman
+*fft v(filt_out)
+fft v(drv_out)
+*plot db(mag(v(filt_out))) ylimit -100 20
+plot db(mag(v(drv_out))) xlog xlimit 1000 1Meg ylimit -100 20
+write output_data.raw
+.endc
