@@ -1,0 +1,140 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "9.0")
+	(uuid "1f38a592-abe3-4278-a574-53f7c00aef12")
+	(paper "A4")
+	(lib_symbols)
+	(sheet
+		(at 94.615 60.325)
+		(size 38.735 19.05)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "2162063d-22e4-461e-a374-45155d1ad91a")
+		(property "Sheetname" "control"
+			(at 94.615 59.6134 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "control.kicad_sch"
+			(at 94.615 79.9596 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "mp3Player"
+				(path "/1f38a592-abe3-4278-a574-53f7c00aef12"
+					(page "3")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 41.91 62.865)
+		(size 33.655 18.415)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "47ec0d90-82db-40e6-816d-633a4ca5fbcb")
+		(property "Sheetname" "Driver"
+			(at 41.91 62.1534 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "driver.kicad_sch"
+			(at 41.91 81.8646 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "mp3Player"
+				(path "/1f38a592-abe3-4278-a574-53f7c00aef12"
+					(page "2")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 149.225 62.865)
+		(size 31.115 18.415)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "d58a4f03-3f32-439c-9f5b-007d8e92e715")
+		(property "Sheetname" "PowerSupply"
+			(at 149.225 62.1534 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "power.kicad_sch"
+			(at 149.225 81.8646 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "mp3Player"
+				(path "/1f38a592-abe3-4278-a574-53f7c00aef12"
+					(page "4")
+				)
+			)
+		)
+	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+	(embedded_fonts no)
+)
