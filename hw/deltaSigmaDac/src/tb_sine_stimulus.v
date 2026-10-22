@@ -2,7 +2,9 @@
 
 module tb_sine_stimulus
     (
-    output dac_out
+    output dac_out,
+    output pwm_high,
+    output pwm_low
     );
     reg [15:0] stimulus_mem [0:88]; // Memory array for 89 samples
     reg [15:0] stimulus_out;        // Signal feeding into your DUT
@@ -21,6 +23,8 @@ module tb_sine_stimulus
                                      .sample_out(sample_out), .sample_valid(sample_valid));
 
     delta_sigma_dac_16bit udsdac (.clk(clk), .rst_n(rst_n), .dac_input(sample_out), .dac_out(dac_out));
+
+    pdm_to_pwm_transcoder_p_channel_high upmwout (.clk_50m(clk), .rst_n(rst_n), .pdm_in(dac_out), .pwm_low(pwm_low), .pwm_high(pwm_high));
 
     initial begin
         clk = 0;

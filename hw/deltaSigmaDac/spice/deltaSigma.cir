@@ -1,27 +1,31 @@
 * This is an example of a sine stimulus from a first order delta sigma modulator.
-.model comparator dac_bridge(out_low = -2.5 out_high = 2.5) 
+.model comparator dac_bridge(out_low = -2.5 out_high = 2.5 t_rise=1ns t_fall=1ns) 
 *athresh_comparator [%vd threshold control] [over_threshold] comparator
 asinestim [dac_out] [drv_out] comparator
+asinestim2 [pwm_low] [drv_out_l] comparator
+asinestim3 [pwm_high] [drv_out_h] comparator
 
 * A tiny Verilog module handles the deltaSigma dac and test bench.
-.model vlog_ds d_cosim simulation="ivlng" sim_args=["sine_stim_test"]
-averilog null [ dac_out ] vlog_ds
+.model vlog_ds d_cosim simulation="ivlng" sim_args=["../src/sine_stim_test"]
+averilog null [ dac_out pwm_low pwm_high] vlog_ds
 
 * output rc filter
-Rf drv_out filt_out 1k
-cout filt_out 0 8n
+Lf drv_out filt_out 10u
+cout filt_out 0 470n
+RL filt_out 0 8
 .end
-
+.options trtol=8 reltol=0.005
 .control
-tran 10n 2m uic
+tran 10n 2m 
 *fourier v(filt_out) 2k
-plot dac_out-5 drv_out-10 filt_out
+*plot pwm_out-5 drv_out2-10 filt_out
+plot drv_out_h drv_out_l-5
 *linearize v(filt_out)
-linearize v(drv_out)
-set specwindow=blackman
+*linearize v(drv_out2)
+*set specwindow=blackman
 *fft v(filt_out)
-fft v(drv_out)
+*fft v(drv_out2)
 *plot db(mag(v(filt_out))) ylimit -100 20
-plot db(mag(v(drv_out))) xlog xlimit 1000 1Meg ylimit -100 20
+*plot db(mag(v(drv_out2))) xlog xlimit 1000 1Meg ylimit -100 20
 write output_data.raw
 .endc
