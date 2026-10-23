@@ -1,7 +1,8 @@
+`timescale 1ns / 1ps
 // -------------------------------------------------------------------------
 // Module: pdm_to_pwm_transcoder_p_channel_high
 // Description: Transcodes a 50 MHz 1-bit PDM stream into a 300 kHz PWM signal,
-//              then splits it into complementary High-Side and Low-Side signals.
+//              then drives two complementary half-bridges 180 degrees apart.
 //              Modded for an AO3401A P-Channel High-Side (Active-LOW Gate) 
 //              and an AO3400 N-Channel Low-Side (Active-HIGH Gate).
 // -------------------------------------------------------------------------
@@ -10,7 +11,9 @@ module pdm_to_pwm_transcoder_p_channel_high (
     input  wire       rst_n,      // Active-low asynchronous reset
     input  wire       pdm_in,     // 1-bit PDM stream from Sigma-Delta loop
     output reg        pwm_high,   // High-Side Gate Drive (AO3401A P-Ch: Active-LOW)
-    output reg        pwm_low     // Low-Side Gate Drive (AO3400 N-Ch: Active-HIGH)
+    output reg        pwm_low,    // Low-Side Gate Drive (AO3400 N-Ch: Active-HIGH)
+    output reg        pwm_n_high, // Second bridge high-side gate, 180 degrees out of phase
+    output reg        pwm_n_low   // Second bridge low-side gate, 180 degrees out of phase
 );
 
     // Timing Parameters based on a 50 MHz Clock (1 cycle = 20ns)
@@ -33,6 +36,8 @@ module pdm_to_pwm_transcoder_p_channel_high (
     // Dead-time tracking counters
     reg [3:0] dt_counter_high;
     reg [3:0] dt_counter_low;
+    reg [3:0] dt_counter_high_2;
+    reg [3:0] dt_counter_low_2;
 
     // ---------------------------------------------------------------------
     // Step 1: PDM Window Profiler & Raw PWM Generation
@@ -68,16 +73,19 @@ module pdm_to_pwm_transcoder_p_channel_high (
     end
 
     // ---------------------------------------------------------------------
-    // Step 2: Complementary Splitting with Inverted High-Side Logic
+    // Step 2: Drive complementary gate pairs in opposite PWM phases
     // ---------------------------------------------------------------------
     always @(posedge clk_50m or negedge rst_n) begin
         if (!rst_n) begin
             pwm_high        <= 1'b1; // P-Channel Gate HIGH = OFF
             pwm_low         <= 1'b0; // N-Channel Gate LOW  = OFF
-            dt_counter_high <= 4'd0;
-            dt_counter_low  <= 4'd0;
+            pwm_n_high      <= 1'b1;
+            pwm_n_low       <= 1'b0;
+            dt_counter_high   <= 4'd0;
+            dt_counter_low    <= 4'd0;
+            dt_counter_high_2 <= 4'd0;
+            dt_counter_low_2  <= 4'd0;
         end else begin
-            
             // --- HIGH-SIDE CONDITION (pwm_raw == 1) ---
             // High-side needs to be ON, Low-side needs to be OFF
             if (pwm_raw == 1'b1) begin
@@ -107,9 +115,30 @@ module pdm_to_pwm_transcoder_p_channel_high (
                     pwm_low        <= 1'b1; // Safely turn ON N-Ch (Gate HIGH)
                 end
             end
-            
+
+            // The second bridge uses the opposite PWM phase.
+            if (pwm_raw == 1'b0) begin
+                pwm_n_low        <= 1'b0;
+                dt_counter_low_2 <= 4'd0;
+
+                if (dt_counter_high_2 < DEAD_TIME_CYCLES) begin
+                    pwm_n_high        <= 1'b1;
+                    dt_counter_high_2 <= dt_counter_high_2 + 1'b1;
+                end else begin
+                    pwm_n_high <= 1'b0;
+                end
+            end else begin
+                pwm_n_high        <= 1'b1;
+                dt_counter_high_2 <= 4'd0;
+
+                if (dt_counter_low_2 < DEAD_TIME_CYCLES) begin
+                    pwm_n_low        <= 1'b0;
+                    dt_counter_low_2 <= dt_counter_low_2 + 1'b1;
+                end else begin
+                    pwm_n_low <= 1'b1;
+                end
+            end
         end
     end
 
 endmodule
-
