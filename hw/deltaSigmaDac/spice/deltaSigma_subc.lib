@@ -1,0 +1,34 @@
+* This is an example of a sine stimulus from a first order delta sigma modulator.
+.SUBCKT ds_dac 1 2 3 4 5
+*              | | | | |
+*              | | | | drv_n_out_l
+*              | | | drv_n_out_h 
+*              | | drv_out_l
+*              | drv_out_h
+*              drv_out
+*                
+.model vlog_ds d_cosim simulation="ivlng" sim_args=["../src/sine_stim_test"]
+.model comparator dac_bridge(out_low = 0 out_high = 3.3 t_rise=1ns t_fall=1ns)
+.model adc_model adc_bridge(in_low = 0.8 in_high = 1.8 rise_delay=1ns fall_delay=1ns)
+
+asinestim [dac_out] [drv_out] comparator
+asinestim2 [pwm_low] [drv_out_l] comparator
+asinestim3 [pwm_high] [drv_out_h] comparator
+asinestim4 [pwm_n_low] [drv_n_out_l] comparator
+asinestim5 [pwm_n_high] [drv_n_out_h] comparator
+
+aclk [clk_in] [clk] adc_model
+arst [rst_n_in] [rst_n] adc_model
+
+* A Verilog module handles the deltaSigma dac and test bench.
+averilog [clk rst_n] [dac_out pwm_high pwm_low pwm_n_high pwm_n_low] null vlog_ds
+
+R1 drv_out 1 0.1
+R2 drv_out_h 2 0.1
+R3 drv_out_l 3 0.1
+R4 drv_n_out_h 4 0.1
+R5 drv_n_out_l 5 0.1
+
+V1 clk_in 0 PULSE( 3.3 0 0 1n 1n 10n 20n)
+V2 rst_n_in 0 PWL(0 0 50n 3.3)
+.ends
