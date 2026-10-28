@@ -2,6 +2,10 @@
 
 module tb_sine_stimulus
     (
+  `ifdef USE_NGSPICE
+    input clk,
+    input rst_n,
+  `endif
     output dac_out,
     output pwm_high,
     output pwm_low,
@@ -12,15 +16,17 @@ module tb_sine_stimulus
     reg [15:0] stimulus_out;        // Signal feeding into your DUT
     integer i;
 
+`ifdef USE_NGSPICE
+`else
     reg clk;
     reg rst_n;
+    always #10 clk = ~clk;  // 50MHz clk for sigma delta
+`endif
     reg sample_valid;
     wire [15:0] sample_out;
     reg [15:0] current_sample;
     reg [15:0] last_sample;
 
-    always #10 clk = ~clk;  // 50MHz clk for sigma delta
-    
     audio_linear_interpolator ualin (.clk_50m(clk), .rst_n(rst_n), .sample_in(stimulus_out), 
                                      .sample_out(sample_out), .sample_valid(sample_valid));
 
@@ -30,10 +36,12 @@ module tb_sine_stimulus
                                                   .pwm_high(pwm_high), .pwm_n_high(pwm_n_high), .pwm_n_low(pwm_n_low));
 
     initial begin
+`ifndef USE_NGSPICE
         clk = 0;
         rst_n = 0;
 
         #50 rst_n = 1;
+`endif
 
         $dumpfile("sine_test.vcd");
         $dumpvars(0, tb_sine_stimulus);
@@ -44,7 +52,7 @@ module tb_sine_stimulus
         stimulus_out = 16'h0000;
         
         // Wait for reset or initialization if your DUT needs it
-        #100; 
+       #100; 
 
         // Loop through all 89 samples at a 44.1 kHz sampling rate
         for (i = 0; i < 89; i = i + 1) begin
