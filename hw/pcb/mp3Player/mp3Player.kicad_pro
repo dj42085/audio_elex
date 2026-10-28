@@ -446,7 +446,7 @@
         "uuid": "1f38a592-abe3-4278-a574-53f7c00aef12"
       }
     ],
-    "used_designators": "#GND1-3,C1-4,R1-5,V1-3",
+    "used_designators": "#GND1-6,C1-6,L1-2,Q3-4,R1-6,U2,V1-3",
     "variants": []
   },
   "sheets": [
@@ -456,7 +456,7 @@
     ],
     [
       "47ec0d90-82db-40e6-816d-633a4ca5fbcb",
-      "Driver"
+      "driver"
     ],
     [
       "2162063d-22e4-461e-a374-45155d1ad91a",

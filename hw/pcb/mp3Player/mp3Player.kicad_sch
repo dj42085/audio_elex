@@ -67,7 +67,7 @@
 			(color 0 0 0 0)
 		)
 		(uuid "47ec0d90-82db-40e6-816d-633a4ca5fbcb")
-		(property "Sheetname" "Driver"
+		(property "Sheetname" "driver"
 			(at 41.91 62.1534 0)
 			(show_name no)
 			(do_not_autoplace no)
