@@ -1672,6 +1672,18 @@
 		(uuid "71d6d828-a0cb-4a78-9aef-a5716acf233c")
 	)
 	(junction
+		(at 196.85 146.05)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "740c9b8a-158e-4b13-b3e0-f20b3e6408e3")
+	)
+	(junction
+		(at 196.85 63.5)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "7fe1750a-c115-4bda-ab7c-f6b0446d0047")
+	)
+	(junction
 		(at 135.89 146.05)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -1827,6 +1839,16 @@
 	)
 	(wire
 		(pts
+			(xy 196.85 63.5) (xy 205.74 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2437fc42-59d8-4e99-9b0a-793d9c66d41c")
+	)
+	(wire
+		(pts
 			(xy 58.42 34.29) (xy 58.42 39.37)
 		)
 		(stroke
@@ -1924,6 +1946,16 @@
 			(type default)
 		)
 		(uuid "5ea4a939-1f19-4fbb-a2f5-53177d9072fd")
+	)
+	(wire
+		(pts
+			(xy 196.85 146.05) (xy 205.74 146.05)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6341c177-9c66-49c5-8448-13a9ce29b293")
 	)
 	(wire
 		(pts
@@ -2415,16 +2447,6 @@
 		)
 		(uuid "ffc296e8-6a00-4da6-95d6-9dd2c8fd1401")
 	)
-	(label "spkrn"
-		(at 194.31 146.05 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "09585136-debb-4903-ba8b-222b350962a2")
-	)
 	(label "gatep"
 		(at 125.73 53.34 0)
 		(effects
@@ -2484,16 +2506,6 @@
 			(justify left bottom)
 		)
 		(uuid "482e9385-e3df-460c-b484-01f34a36f83c")
-	)
-	(label "spkrp"
-		(at 194.31 63.5 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "4a9efb26-f16c-4736-ac52-68a4d97a7dba")
 	)
 	(label "drv_out_n"
 		(at 142.24 146.05 0)
