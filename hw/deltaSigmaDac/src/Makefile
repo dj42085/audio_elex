@@ -1,7 +1,7 @@
 IVERILOG ?= iverilog
 VVP ?= vvp
-MACROS ?=
-VERILOG_SOURCES := $(filter-out ds_top.v,$(wildcard *.v))
+MACROS ?=null
+VERILOG_SOURCES := $(filter-out ds_top.v sine_stimulus_top.v,$(wildcard *.v))
 
 .PHONY: all simulate clean
 
@@ -12,7 +12,8 @@ sine_stim_test: $(VERILOG_SOURCES)
 
 simulate: sine_stim_test
 	$(VVP) sine_stim_test
-	gtkwave *.vcd
+#	gtkwave *.vcd
 
 clean:
 	rm -f sine_stim_test
+	rm -f *.vcd

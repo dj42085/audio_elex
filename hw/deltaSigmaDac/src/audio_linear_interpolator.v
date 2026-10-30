@@ -31,9 +31,8 @@ module audio_linear_interpolator (
     // Local constants
     localparam [10:0] STEPS_PER_SAMPLE = 11'd1133;
 
-    // Internal registers to store the boundary samples
+    // The last input sample is the starting point for the next interpolation ramp.
     reg [15:0] current_sample;
-    reg [15:0] next_sample;
     
     // Tracks our position between sample A and sample B (0 to 1132)
     reg [10:0] step_counter;
@@ -41,32 +40,26 @@ module audio_linear_interpolator (
     // Fixed-point accumulation registers to track fractional increments
     reg signed [31:0] ramp_accumulator;
     reg signed [31:0] ramp_increment;
+    wire signed [32:0] ramp_delta =
+        $signed({1'b0, sample_in, 16'd0}) - $signed({1'b0, current_sample, 16'd0});
 
     // Capture incoming samples and handle the sample rate boundary
     always @(posedge clk_50m or negedge rst_n) begin
         if (!rst_n) begin
             current_sample   <= 16'd0;
-            next_sample      <= 16'd0;
             step_counter     <= 11'd0;
             ramp_accumulator <= 32'd0;
             ramp_increment   <= 32'd0;
         end else begin
             if (sample_valid) begin
-                // Shift the window forward: what was "next" becomes "current"
-                current_sample <= next_sample;
-                next_sample    <= sample_in;
-                
+                current_sample <= sample_in;
+
                 // Reset the step tracker for the new sample window
                 step_counter   <= 11'd0;
                 
-                // Seed the accumulator with the starting point (shifted into fixed-point upper bits)
-                ramp_accumulator <= {next_sample, 16'd0};
-                
-                // Calculate the slope: (Next - Current) / 1133
-                // To avoid hardware division, a standard optimization is multiplying by 
-                // the reciprocal constant (1/1133 in fixed point) or using a small state machine.
-                // For simplicity, we show the signed behavioral division which synthesis tools optimize:
-                ramp_increment   <= ($signed({sample_in, 16'd0}) - $signed({next_sample, 16'd0})) / $signed({21'd0, STEPS_PER_SAMPLE});
+                // Start at the previous sample and ramp toward the new one.
+                ramp_accumulator <= {current_sample, 16'd0};
+                ramp_increment   <= ramp_delta / 33'sd1133;
                 
             end else if (step_counter < STEPS_PER_SAMPLE - 1) begin
                 step_counter     <= step_counter + 11'd1;

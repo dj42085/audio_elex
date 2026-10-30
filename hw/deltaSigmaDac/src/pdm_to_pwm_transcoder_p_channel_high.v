@@ -13,7 +13,8 @@ module pdm_to_pwm_transcoder_p_channel_high (
     output reg        pwm_high,   // High-Side Gate Drive (AO3401A P-Ch: Active-LOW)
     output reg        pwm_low,    // Low-Side Gate Drive (AO3400 N-Ch: Active-HIGH)
     output reg        pwm_n_high, // Second bridge high-side gate, 180 degrees out of phase
-    output reg        pwm_n_low   // Second bridge low-side gate, 180 degrees out of phase
+    output reg        pwm_n_low,  // Second bridge low-side gate, 180 degrees out of phase
+    output reg        sync_out     // Optional sync pulse for debugging or monitoring
 );
 
     // Timing Parameters based on a 50 MHz Clock (1 cycle = 20ns)
@@ -48,6 +49,7 @@ module pdm_to_pwm_transcoder_p_channel_high (
             pdm_ones_accumulator <= 8'd0;
             active_duty_cycle    <= 8'd83; // Default to 50% duty cycle
             pwm_raw              <= 1'b0;
+            sync_out             <= 1'b0;
         end else begin
             // Accumulate PDM bits
             if (pdm_in) begin
@@ -66,8 +68,10 @@ module pdm_to_pwm_transcoder_p_channel_high (
             // Generate raw single-ended PWM pulse
             if (cycle_counter < active_duty_cycle) begin
                 pwm_raw <= 1'b1;
+                sync_out <= 1'b1; // Optional sync pulse for debugging
             end else begin
                 pwm_raw <= 1'b0;
+                sync_out <= 1'b0;
             end
         end
     end

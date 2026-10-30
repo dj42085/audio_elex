@@ -29,7 +29,8 @@ module ds_top(
         output wire pwm_high,
         output wire pwm_low,
         output wire pwm_n_high,
-        output wire pwm_n_low
+        output wire pwm_n_low,
+        output wire sync_out
     );
 
     wire [15:0] sample_out;
@@ -56,7 +57,8 @@ module ds_top(
         .pwm_low(pwm_low),
         .pwm_high(pwm_high),
         .pwm_n_high(pwm_n_high),
-        .pwm_n_low(pwm_n_low)
+        .pwm_n_low(pwm_n_low),
+        .sync_out(sync_out)
     );
 
 endmodule
