@@ -1509,7 +1509,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Simulation_SPICE:0"
+		(symbol "power:GND"
 			(power global)
 			(pin_numbers
 				(hide yes)
@@ -1523,8 +1523,8 @@
 			(on_board yes)
 			(in_pos_files yes)
 			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "#GND"
-				(at 0 -5.08 0)
+			(property "Reference" "#PWR"
+				(at 0 -6.35 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(hide yes)
@@ -1534,8 +1534,8 @@
 					)
 				)
 			)
-			(property "Value" "0"
-				(at 0 -2.54 0)
+			(property "Value" "GND"
+				(at 0 -3.81 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(effects
@@ -1555,29 +1555,7 @@
 					)
 				)
 			)
-			(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#subsec_Circuit_elements__device"
-				(at 0 -10.16 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "0V reference potential for simulation"
-				(at 0 -7.62 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "simulation"
+			(property "Datasheet" ""
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -1588,10 +1566,32 @@
 					)
 				)
 			)
-			(symbol "0_0_1"
+			(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "global power"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "GND_0_1"
 				(polyline
 					(pts
-						(xy -1.27 0) (xy 0 -1.27) (xy 1.27 0) (xy -1.27 0)
+						(xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)
 					)
 					(stroke
 						(width 0)
@@ -1602,241 +1602,18 @@
 					)
 				)
 			)
-			(symbol "0_1_1"
+			(symbol "GND_1_1"
 				(pin power_in line
-					(at 0 0 0)
+					(at 0 0 270)
 					(length 0)
 					(name ""
 						(effects
 							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "Simulation_SPICE:VDC"
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 0.0254)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "V"
-				(at 2.54 2.54 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Value" "1"
-				(at 2.54 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#sec_Independent_Sources_for"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "Voltage source, DC"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Sim.Pins" "1=+ 2=-"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Sim.Type" "DC"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Sim.Device" "V"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "ki_keywords" "simulation"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "VDC_0_0"
-				(polyline
-					(pts
-						(xy -1.27 0.254) (xy 1.27 0.254)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -0.762 -0.254) (xy -1.27 -0.254)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.254 -0.254) (xy -0.254 -0.254)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.27 -0.254) (xy 0.762 -0.254)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(text "+"
-					(at 0 1.905 0)
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(symbol "VDC_0_1"
-				(circle
-					(center 0 0)
-					(radius 2.54)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-			)
-			(symbol "VDC_1_1"
-				(pin passive line
-					(at 0 5.08 270)
-					(length 2.54)
-					(name ""
-						(effects
-							(font
 								(size 1.27 1.27)
 							)
 						)
 					)
 					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -5.08 90)
-					(length 2.54)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1859,18 +1636,6 @@
 		(uuid "b4a2575b-039e-4533-863a-0b8ef967a398")
 	)
 	(junction
-		(at 58.42 35.56)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "0be02f37-99cf-4754-a0cb-d1246fc349f3")
-	)
-	(junction
-		(at 189.23 101.6)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "2ecbc9ce-fa18-4c9d-8b7f-d6111ac4113a")
-	)
-	(junction
 		(at 58.42 34.29)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -1889,10 +1654,10 @@
 		(uuid "49147797-cac4-4a41-a9e2-463708e5b7f9")
 	)
 	(junction
-		(at 135.89 166.37)
+		(at 189.23 107.95)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "666a2882-874e-4e12-b41e-567538b79c66")
+		(uuid "4c952adc-00ac-4153-990d-45fe44564fd6")
 	)
 	(junction
 		(at 86.36 19.05)
@@ -1953,6 +1718,22 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "e9d1dbdf-bd53-47ff-8e3d-ca7ca5d68c2e")
+	)
+	(junction
+		(at 135.89 166.37)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f4142979-4018-45fc-9a7b-1ecb3cb94922")
+	)
+	(wire
+		(pts
+			(xy 57.15 68.58) (xy 76.2 68.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0696dc04-739b-430b-aebe-ea0ce5994694")
 	)
 	(wire
 		(pts
@@ -2016,6 +1797,16 @@
 	)
 	(wire
 		(pts
+			(xy 62.23 146.05) (xy 76.2 146.05)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "192a5335-64ad-4fb0-93c5-ace7d599bf53")
+	)
+	(wire
+		(pts
 			(xy 135.89 58.42) (xy 135.89 63.5)
 		)
 		(stroke
@@ -2036,7 +1827,7 @@
 	)
 	(wire
 		(pts
-			(xy 58.42 34.29) (xy 58.42 35.56)
+			(xy 58.42 34.29) (xy 58.42 39.37)
 		)
 		(stroke
 			(width 0)
@@ -2063,26 +1854,6 @@
 			(type default)
 		)
 		(uuid "3a2b0356-bf00-4560-81a1-7b4f47a3af50")
-	)
-	(wire
-		(pts
-			(xy 177.8 101.6) (xy 189.23 101.6)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3e1dc379-8561-4b77-9336-ff91ab97f24d")
-	)
-	(wire
-		(pts
-			(xy 189.23 81.28) (xy 189.23 101.6)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "43253fc0-dd9a-41e7-b2e9-151c75f3bbdb")
 	)
 	(wire
 		(pts
@@ -2123,16 +1894,6 @@
 			(type default)
 		)
 		(uuid "5428f366-8dfd-40db-a14c-d9f7d39b8eac")
-	)
-	(wire
-		(pts
-			(xy 63.5 68.58) (xy 76.2 68.58)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5478834e-fffc-421b-a5bb-a476d3b99e43")
 	)
 	(wire
 		(pts
@@ -2196,6 +1957,26 @@
 	)
 	(wire
 		(pts
+			(xy 189.23 107.95) (xy 189.23 123.19)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6d685c3a-ccbf-445b-b669-e36f7f196fa9")
+	)
+	(wire
+		(pts
+			(xy 135.89 166.37) (xy 135.89 170.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "78e9360f-5248-4f46-a490-b591f76fbafb")
+	)
+	(wire
+		(pts
 			(xy 189.23 130.81) (xy 189.23 146.05)
 		)
 		(stroke
@@ -2203,26 +1984,6 @@
 			(type default)
 		)
 		(uuid "794cd3b2-6d70-4f6f-b5ca-e87ac11e85fc")
-	)
-	(wire
-		(pts
-			(xy 58.42 35.56) (xy 58.42 39.37)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "79f3b3a6-0ba5-4b4c-ab92-ac022f995e94")
-	)
-	(wire
-		(pts
-			(xy 34.29 35.56) (xy 58.42 35.56)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7bc6eee4-8e2e-4fcc-8059-be57090b02d9")
 	)
 	(wire
 		(pts
@@ -2243,16 +2004,6 @@
 			(type default)
 		)
 		(uuid "86e9c596-57e1-431b-abdc-d67018257788")
-	)
-	(wire
-		(pts
-			(xy 34.29 22.86) (xy 34.29 19.05)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "873dd4e7-672b-4c41-b803-1e020732a7c3")
 	)
 	(wire
 		(pts
@@ -2286,7 +2037,7 @@
 	)
 	(wire
 		(pts
-			(xy 189.23 101.6) (xy 189.23 123.19)
+			(xy 189.23 81.28) (xy 189.23 107.95)
 		)
 		(stroke
 			(width 0)
@@ -2303,26 +2054,6 @@
 			(type default)
 		)
 		(uuid "92ce132c-6209-4555-8077-16d7d61bee80")
-	)
-	(wire
-		(pts
-			(xy 135.89 166.37) (xy 135.89 171.45)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "94d40e99-b0ce-46c3-8463-18c02acb3c51")
-	)
-	(wire
-		(pts
-			(xy 63.5 63.5) (xy 76.2 63.5)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9566249d-69fe-48f7-91ad-8fcdee129e92")
 	)
 	(wire
 		(pts
@@ -2396,13 +2127,13 @@
 	)
 	(wire
 		(pts
-			(xy 67.31 151.13) (xy 76.2 151.13)
+			(xy 184.15 107.95) (xy 189.23 107.95)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "a7530b69-25ab-4384-8b94-0ac2ba13b33b")
+		(uuid "a66a2a6d-52e0-4cbd-8488-b1f811a11a03")
 	)
 	(wire
 		(pts
@@ -2423,16 +2154,6 @@
 			(type default)
 		)
 		(uuid "b7b57358-d44a-4dde-b4f6-221a98650d84")
-	)
-	(wire
-		(pts
-			(xy 34.29 33.02) (xy 34.29 35.56)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b8d72160-5691-492e-8942-759b3d369ff2")
 	)
 	(wire
 		(pts
@@ -2483,6 +2204,26 @@
 			(type default)
 		)
 		(uuid "c1b044db-e0a1-410f-a3fe-7f88d1fc87e4")
+	)
+	(wire
+		(pts
+			(xy 62.23 151.13) (xy 76.2 151.13)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c54fe102-6ae4-4e62-a1ae-f46426f5f236")
+	)
+	(wire
+		(pts
+			(xy 57.15 63.5) (xy 76.2 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c5b9e31e-cc1d-47bc-89f2-ba3422c4d8fd")
 	)
 	(wire
 		(pts
@@ -2613,16 +2354,6 @@
 			(type default)
 		)
 		(uuid "e5bf27e6-2ebd-4af5-a471-11b059cbb706")
-	)
-	(wire
-		(pts
-			(xy 67.31 146.05) (xy 76.2 146.05)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e7a5959d-d6da-4e56-a9e7-167c7b78617d")
 	)
 	(wire
 		(pts
@@ -2794,7 +2525,7 @@
 		)
 		(uuid "6399f413-32ee-4100-9875-223abdacf84b")
 	)
-	(label "v5p0"
+	(label "v5p0_drv"
 		(at 53.34 101.6 0)
 		(effects
 			(font
@@ -2803,16 +2534,6 @@
 			(justify left bottom)
 		)
 		(uuid "70a3b6c3-5869-4d3c-a553-3289eae95172")
-	)
-	(label "inn"
-		(at 63.5 68.58 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "a20a0431-33c8-42cd-982b-a02737b8a10d")
 	)
 	(label "gaten"
 		(at 125.73 76.2 0)
@@ -2824,27 +2545,7 @@
 		)
 		(uuid "a3a5a937-253b-4ca3-be37-7d54208a8597")
 	)
-	(label "inp"
-		(at 63.5 63.5 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "c0f377fd-7522-4548-8c64-3b214006f197")
-	)
-	(label "inn_n"
-		(at 67.31 151.13 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "debf43f1-2853-4aa7-a039-e43b33c605f8")
-	)
-	(label "v5p0"
+	(label "v5p0_drv"
 		(at 48.26 19.05 0)
 		(effects
 			(font
@@ -2854,15 +2555,160 @@
 		)
 		(uuid "ec298939-d876-4108-8b2e-cbe0a93b008f")
 	)
-	(label "inp_n"
-		(at 67.31 146.05 0)
+	(hierarchical_label "spkrn"
+		(shape output)
+		(at 205.74 146.05 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left bottom)
+			(justify left)
 		)
-		(uuid "fd282ac2-d9dc-4cd7-b7b3-f9874e5c71dd")
+		(uuid "04b343cd-44c2-453d-abfe-63eedcb18581")
+	)
+	(hierarchical_label "v5p0_drv"
+		(shape bidirectional)
+		(at 34.29 19.05 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "0e3c6a2c-bb43-43b0-bd13-b3b4e77fafae")
+	)
+	(hierarchical_label "spkrp"
+		(shape output)
+		(at 205.74 63.5 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "2f6ec646-ec15-45fb-ad12-7b8e6e6bc394")
+	)
+	(hierarchical_label "inp_n"
+		(shape input)
+		(at 62.23 146.05 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "3eee9ab2-4149-4e54-9419-8f91741dc3c6")
+	)
+	(hierarchical_label "inp"
+		(shape input)
+		(at 57.15 63.5 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "78d84f3f-37aa-4054-81e2-ee563e9ec902")
+	)
+	(hierarchical_label "inn"
+		(shape input)
+		(at 57.15 68.58 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "c3b2316e-3b3c-4aca-97f0-9cee0864d4dc")
+	)
+	(hierarchical_label "inn_n"
+		(shape input)
+		(at 62.23 151.13 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "e2011e41-d290-41f4-83cf-bb3c9baef549")
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 77.47 124.46 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "05d6d90d-afb2-4a0a-8945-f88f4b7b6140")
+		(property "Reference" "#PWR04"
+			(at 77.47 130.81 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 77.47 129.54 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 77.47 124.46 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 77.47 124.46 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 77.47 124.46 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "76f81119-6a39-421c-80cb-6898648504ee")
+		)
+		(instances
+			(project "mp3Player"
+				(path "/1f38a592-abe3-4278-a574-53f7c00aef12/47ec0d90-82db-40e6-816d-633a4ca5fbcb"
+					(reference "#PWR04")
+					(unit 1)
+				)
+			)
+		)
 	)
 	(symbol
 		(lib_id "Device:R")
@@ -3462,6 +3308,84 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 135.89 88.9 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "1d281a28-101f-4411-a6b3-2c1b58a13820")
+		(property "Reference" "#PWR03"
+			(at 135.89 95.25 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 135.89 93.98 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 135.89 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 135.89 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 135.89 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "b49584a4-8dbd-4b51-8531-b895aff5bda8")
+		)
+		(instances
+			(project "mp3Player"
+				(path "/1f38a592-abe3-4278-a574-53f7c00aef12/47ec0d90-82db-40e6-816d-633a4ca5fbcb"
+					(reference "#PWR03")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Driver_FET:TC4427xOA")
 		(at 86.36 66.04 0)
 		(unit 1)
@@ -3686,6 +3610,84 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 135.89 170.18 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "405e1070-802c-469b-8975-c9de77bea124")
+		(property "Reference" "#PWR010"
+			(at 135.89 176.53 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 135.89 175.26 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 135.89 170.18 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 135.89 170.18 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 135.89 170.18 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "b92a362a-59bf-4079-9982-787310674ce1")
+		)
+		(instances
+			(project "mp3Player"
+				(path "/1f38a592-abe3-4278-a574-53f7c00aef12/47ec0d90-82db-40e6-816d-633a4ca5fbcb"
+					(reference "#PWR010")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:Q_PMOS")
 		(at 133.35 53.34 0)
 		(mirror x)
@@ -3809,84 +3811,6 @@
 			(project "mp3Player"
 				(path "/1f38a592-abe3-4278-a574-53f7c00aef12/47ec0d90-82db-40e6-816d-633a4ca5fbcb"
 					(reference "Q2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Simulation_SPICE:0")
-		(at 135.89 171.45 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "4efb3482-3025-43ee-8826-86343db5bfda")
-		(property "Reference" "#GND04"
-			(at 135.89 176.53 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "0"
-			(at 135.89 168.91 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 135.89 171.45 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#subsec_Circuit_elements__device"
-			(at 135.89 181.61 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "0V reference potential for simulation"
-			(at 135.89 179.07 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "09d452de-3aab-4d7f-92e4-035f996d3f1e")
-		)
-		(instances
-			(project "mp3Player"
-				(path "/1f38a592-abe3-4278-a574-53f7c00aef12/47ec0d90-82db-40e6-816d-633a4ca5fbcb"
-					(reference "#GND04")
 					(unit 1)
 				)
 			)
@@ -4057,8 +3981,8 @@
 		)
 	)
 	(symbol
-		(lib_id "Simulation_SPICE:0")
-		(at 58.42 39.37 0)
+		(lib_id "power:GND")
+		(at 184.15 107.95 270)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -4067,9 +3991,9 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "6b0e9936-0c60-42ab-ab6b-03d207f59f24")
-		(property "Reference" "#GND01"
-			(at 58.42 44.45 0)
+		(uuid "5fc74d54-68e4-4649-ab95-10ef12343e5f")
+		(property "Reference" "#PWR01"
+			(at 177.8 107.95 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4079,8 +4003,87 @@
 				)
 			)
 		)
-		(property "Value" "0"
-			(at 58.42 36.83 0)
+		(property "Value" "GND"
+			(at 180.34 107.9499 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 184.15 107.95 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 184.15 107.95 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 184.15 107.95 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "69701370-c7cf-4a7d-a6c3-1042da79c0d3")
+		)
+		(instances
+			(project "mp3Player"
+				(path "/1f38a592-abe3-4278-a574-53f7c00aef12/47ec0d90-82db-40e6-816d-633a4ca5fbcb"
+					(reference "#PWR01")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 58.42 39.37 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "69779297-d46f-4b08-bb69-b335481a714d")
+		(property "Reference" "#PWR05"
+			(at 58.42 45.72 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 58.42 44.45 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -4100,8 +4103,8 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#subsec_Circuit_elements__device"
-			(at 58.42 49.53 0)
+		(property "Datasheet" ""
+			(at 58.42 39.37 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4111,8 +4114,8 @@
 				)
 			)
 		)
-		(property "Description" "0V reference potential for simulation"
-			(at 58.42 46.99 0)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 58.42 39.37 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4123,12 +4126,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "2a549724-816e-479b-a2f2-b741ab3bd637")
+			(uuid "6024579c-9276-4145-b8a5-affe655f8eae")
 		)
 		(instances
 			(project "mp3Player"
 				(path "/1f38a592-abe3-4278-a574-53f7c00aef12/47ec0d90-82db-40e6-816d-633a4ca5fbcb"
-					(reference "#GND01")
+					(reference "#PWR05")
 					(unit 1)
 				)
 			)
@@ -4344,84 +4347,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Simulation_SPICE:0")
-		(at 135.89 88.9 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "97c86806-55e0-4d0c-9bda-a1687cdbec09")
-		(property "Reference" "#GND02"
-			(at 135.89 93.98 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "0"
-			(at 135.89 86.36 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 135.89 88.9 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#subsec_Circuit_elements__device"
-			(at 135.89 99.06 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "0V reference potential for simulation"
-			(at 135.89 96.52 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "64bd22cc-6d58-4617-b97f-9b2e77c69a79")
-		)
-		(instances
-			(project "mp3Player"
-				(path "/1f38a592-abe3-4278-a574-53f7c00aef12/47ec0d90-82db-40e6-816d-633a4ca5fbcb"
-					(reference "#GND02")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:Q_NMOS")
 		(at 133.35 158.75 0)
 		(unit 1)
@@ -4551,85 +4476,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Simulation_SPICE:0")
-		(at 177.8 101.6 270)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "b4c7a260-f714-43cb-bdcd-58e755f21537")
-		(property "Reference" "#GND06"
-			(at 172.72 101.6 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "0"
-			(at 179.07 101.5999 90)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 177.8 101.6 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#subsec_Circuit_elements__device"
-			(at 167.64 101.6 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "0V reference potential for simulation"
-			(at 170.18 101.6 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "e0c8edac-5f06-41ab-96d5-7111e9bbba83")
-		)
-		(instances
-			(project "mp3Player"
-				(path "/1f38a592-abe3-4278-a574-53f7c00aef12/47ec0d90-82db-40e6-816d-633a4ca5fbcb"
-					(reference "#GND06")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:C")
 		(at 76.2 26.67 0)
 		(unit 1)
@@ -4712,122 +4558,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Simulation_SPICE:VDC")
-		(at 34.29 27.94 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "c57ef97f-d066-49f9-85f3-e89666e2d37f")
-		(property "Reference" "V1"
-			(at 38.1 26.5401 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "5"
-			(at 38.1 29.0801 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 34.29 27.94 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#sec_Independent_Sources_for"
-			(at 34.29 27.94 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Voltage source, DC"
-			(at 34.29 27.94 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Pins" "1=+ 2=-"
-			(at 34.29 27.94 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Type" "DC"
-			(at 34.29 27.94 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Device" "V"
-			(at 34.29 27.94 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "1"
-			(uuid "fcf760ec-d746-4761-b707-0c593f27f33d")
-		)
-		(pin "2"
-			(uuid "5bcaa114-42a6-4156-9949-4bfd31a54de8")
-		)
-		(instances
-			(project "mp3Player"
-				(path "/1f38a592-abe3-4278-a574-53f7c00aef12/47ec0d90-82db-40e6-816d-633a4ca5fbcb"
-					(reference "V1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:R")
 		(at 119.38 135.89 90)
 		(unit 1)
@@ -4902,84 +4632,6 @@
 			(project "mp3Player"
 				(path "/1f38a592-abe3-4278-a574-53f7c00aef12/47ec0d90-82db-40e6-816d-633a4ca5fbcb"
 					(reference "R4")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Simulation_SPICE:0")
-		(at 77.47 124.46 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "d6390d0c-739f-4aff-ade1-7577832eb395")
-		(property "Reference" "#GND05"
-			(at 77.47 129.54 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "0"
-			(at 77.47 121.92 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 77.47 124.46 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#subsec_Circuit_elements__device"
-			(at 77.47 134.62 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "0V reference potential for simulation"
-			(at 77.47 132.08 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "f0d3d33e-94c6-48ba-b507-1a12524d37de")
-		)
-		(instances
-			(project "mp3Player"
-				(path "/1f38a592-abe3-4278-a574-53f7c00aef12/47ec0d90-82db-40e6-816d-633a4ca5fbcb"
-					(reference "#GND05")
 					(unit 1)
 				)
 			)

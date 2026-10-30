@@ -89,6 +89,76 @@
 				(justify left top)
 			)
 		)
+		(pin "inn" input
+			(at 41.91 68.58 180)
+			(uuid "d839b592-a0a7-4056-8d8a-99d55deb7cac")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "inn_n" input
+			(at 41.91 77.47 180)
+			(uuid "b41b4c51-4900-43a0-85f2-ee4c17be3a40")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "inp" input
+			(at 41.91 66.04 180)
+			(uuid "3f2b1711-ab2f-4aa3-a307-22dcc6a83344")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "inp_n" input
+			(at 41.91 74.93 180)
+			(uuid "2670561e-0fad-44b7-8ff9-6703d440e65f")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "spkrn" output
+			(at 75.565 76.2 0)
+			(uuid "5663948e-aa09-4d80-9cce-c970f7685ffc")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "spkrp" output
+			(at 75.565 69.85 0)
+			(uuid "774d50fc-34cd-4534-a011-dd76552ed3c7")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "v5p0_drv" bidirectional
+			(at 59.69 62.865 90)
+			(uuid "b673a721-ee36-450c-ae78-b9d275051a6f")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
 		(instances
 			(project "mp3Player"
 				(path "/1f38a592-abe3-4278-a574-53f7c00aef12"
