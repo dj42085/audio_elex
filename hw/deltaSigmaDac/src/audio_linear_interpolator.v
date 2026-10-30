@@ -40,8 +40,8 @@ module audio_linear_interpolator (
     // Fixed-point accumulation registers to track fractional increments
     reg signed [31:0] ramp_accumulator;
     reg signed [31:0] ramp_increment;
-    wire signed [32:0] ramp_delta =
-        $signed({1'b0, sample_in, 16'd0}) - $signed({1'b0, current_sample, 16'd0});
+    wire signed [16:0] ramp_delta =
+        $signed({1'b0, sample_in}) - $signed({1'b0, current_sample});
 
     // Capture incoming samples and handle the sample rate boundary
     always @(posedge clk_50m or negedge rst_n) begin
@@ -59,7 +59,10 @@ module audio_linear_interpolator (
                 
                 // Start at the previous sample and ramp toward the new one.
                 ramp_accumulator <= {current_sample, 16'd0};
-                ramp_increment   <= ramp_delta / 33'sd1133;
+                ramp_increment   <= ramp_delta <<< 16 / STEPS_PER_SAMPLE; // Calculate the fixed-point increment
+            end else if (step_counter == STEPS_PER_SAMPLE - 1) begin
+                // Once we reach the end of the ramp, hold the last sample value
+                ramp_accumulator <= {sample_in, 16'd0};
                 
             end else if (step_counter < STEPS_PER_SAMPLE - 1) begin
                 step_counter     <= step_counter + 11'd1;
