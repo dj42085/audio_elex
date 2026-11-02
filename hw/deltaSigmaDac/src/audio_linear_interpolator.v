@@ -43,6 +43,20 @@ module audio_linear_interpolator (
     wire signed [16:0] ramp_delta =
         $signed({1'b0, sample_in}) - $signed({1'b0, current_sample});
 
+    function [31:0] calculate_ramp_increment;
+        input signed [16:0] delta;
+        reg signed [31:0] whole_steps;
+        reg signed [31:0] remainder;
+        begin
+            // Split the division first to keep the scaled products in range.
+            whole_steps = $signed({{15{delta[16]}}, delta}) / 32'sd1133;
+            remainder = $signed({{15{delta[16]}}, delta}) % 32'sd1133;
+            calculate_ramp_increment =
+                whole_steps * 32'sd65536 +
+                (remainder * 32'sd65536) / 32'sd1133;
+        end
+    endfunction
+
     // Capture incoming samples and handle the sample rate boundary
     always @(posedge clk_50m or negedge rst_n) begin
         if (!rst_n) begin
@@ -59,7 +73,7 @@ module audio_linear_interpolator (
                 
                 // Start at the previous sample and ramp toward the new one.
                 ramp_accumulator <= {current_sample, 16'd0};
-                ramp_increment   <= ramp_delta <<< 16 / STEPS_PER_SAMPLE; // Calculate the fixed-point increment
+                ramp_increment   <= calculate_ramp_increment(ramp_delta);
             end else if (step_counter == STEPS_PER_SAMPLE - 1) begin
                 // Once we reach the end of the ramp, hold the last sample value
                 ramp_accumulator <= {sample_in, 16'd0};

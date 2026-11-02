@@ -8,9 +8,6 @@ module sine_stimulus_top (
     output wire pwm_n_low,
     output wire sync_out
 );
-    localparam integer SAMPLE_COUNT = 89;
-    localparam integer SAMPLE_PERIOD_CYCLES = 1134;
-
     wire clk_50m;
     wire rst_n;
     wire reset_n_unlocked;
@@ -18,12 +15,6 @@ module sine_stimulus_top (
     wire clk_locked;
 
     reg [1:0] reset_sync;
-
-    reg [15:0] stimulus_mem [0:SAMPLE_COUNT-1];
-    reg [15:0] sample_in;
-    reg [6:0] sample_index;
-    reg [31:0] sample_clock_count;
-    reg sample_valid;
 
     assign rst_n = ~reset_button;
 
@@ -44,35 +35,13 @@ module sine_stimulus_top (
             reset_sync <= {reset_sync[0], 1'b1};
     end
 
-    initial begin
-        $readmemh("sine_stimulus_unsigned.hex", stimulus_mem);
-    end
-
-    always @(posedge clk_50m or negedge system_rst_n) begin
-        if (!system_rst_n) begin
-            sample_in <= 16'h0000;
-            sample_index <= 7'd0;
-            sample_clock_count <= 32'd0;
-            sample_valid <= 1'b0;
-        end else if (sample_clock_count == SAMPLE_PERIOD_CYCLES - 1) begin
-            sample_clock_count <= 32'd0;
-            sample_in <= stimulus_mem[sample_index];
-            sample_valid <= 1'b1;
-            if (sample_index == SAMPLE_COUNT - 1)
-                sample_index <= 7'd0;
-            else
-                sample_index <= sample_index + 1'b1;
-        end else begin
-            sample_clock_count <= sample_clock_count + 1'b1;
-            sample_valid <= 1'b0;
-        end
-    end
-
-    ds_top u_ds_top (
-        .clk_50m(clk_50m),
+    delta_sigma_dac_stream u_delta_sigma_dac_stream (
+        .clk(clk_50m),
         .rst_n(system_rst_n),
-        .sample_in(sample_in),
-        .sample_valid(sample_valid),
+        .test_mode(1'b1),
+        .sample_data(16'h0000),
+        .sample_valid(1'b0),
+        .sample_ready(),
         .dac_out(dac_out),
         .pwm_high(pwm_high),
         .pwm_low(pwm_low),
