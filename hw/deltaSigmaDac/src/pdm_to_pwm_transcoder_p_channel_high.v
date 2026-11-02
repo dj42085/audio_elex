@@ -68,11 +68,10 @@ module pdm_to_pwm_transcoder_p_channel_high (
             // Generate raw single-ended PWM pulse
             if (cycle_counter < active_duty_cycle) begin
                 pwm_raw <= 1'b1;
-                sync_out <= 1'b1; // Optional sync pulse for debugging
             end else begin
                 pwm_raw <= 1'b0;
-                sync_out <= 1'b0;
             end
+            sync_out <= cycle_counter < (WINDOW_SIZE / 2);
         end
     end
 
