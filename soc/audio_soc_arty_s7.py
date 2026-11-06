@@ -22,7 +22,7 @@ from litex.soc.integration.builder import *
 from litex.soc.cores.led import LedChaser
 from litex.soc.cores.gpio import GPIOIn
 from litex.soc.interconnect import stream
-from litex.soc.interconnect.csr import CSRStorage
+from litex.soc.interconnect.csr import CSRStatus, CSRStorage
 from litex.build.generic_platform import IOStandard, Pins, Subsignal
 
 from litedram.modules import MT41K128M16
@@ -88,6 +88,31 @@ class Dac(LiteXModule):
             reset=0,
             description="Select the DAC's internal sine test (1) or stream input (0)."
         )
+        self.sample_data = CSRStorage(
+            16,
+            name="sample_data",
+            description="Unsigned PCM sample to enqueue for DAC playback."
+        )
+        self.sample_ready = CSRStatus(
+            1,
+            name="sample_ready",
+            description="Indicates that a PCM sample can be enqueued."
+        )
+        self.submodules.sample_fifo = sample_fifo = stream.SyncFIFO(
+            [("data", 16)], depth=256, buffered=True
+        )
+        sample_pending = Signal()
+        self.sync += If(self.sample_data.re,
+            sample_pending.eq(1)
+        ).Elif(sample_fifo.sink.ready,
+            sample_pending.eq(0)
+        )
+        self.comb += [
+            sample_fifo.sink.valid.eq(sample_pending),
+            sample_fifo.sink.data.eq(self.sample_data.storage),
+            self.sample_ready.status.eq(sample_fifo.sink.ready & ~sample_pending),
+            sample_fifo.source.connect(self.sink)
+        ]
 
         self.submodules.sample_cdc = stream.ClockDomainCrossing(
             [("data", 16)], cd_from="sys", cd_to="dac", depth=4
@@ -195,6 +220,7 @@ def main():
         default=DAC_SOURCE_DIR,
         help="Directory containing the delta-sigma DAC RTL and stimulus ROM."
     )
+    parser.set_defaults(libc_mode="full")
     args = parser.parse_args()
 
     soc = BaseSoC(
