@@ -1,0 +1,38 @@
+* Verilator-generated 2 ms MP3 playback through the DAC output stage.
+.include "../../../common/basic.lib"
+
+.model mp3_trace d_source(input_file="mp3_2ms.vec")
+A_MP3 [dac_out pwm_high pwm_low pwm_n_high pwm_n_low sync_out] mp3_trace
+
+.model logic_to_voltage dac_bridge(out_low=0 out_high=5 t_rise=1n t_fall=1n)
+A_P_HIGH [pwm_high] [gate_p_high] logic_to_voltage
+A_P_LOW [pwm_low] [gate_p_low] logic_to_voltage
+A_N_HIGH [pwm_n_high] [gate_n_high] logic_to_voltage
+A_N_LOW [pwm_n_low] [gate_n_low] logic_to_voltage
+A_DAC_OUT [dac_out] [dac_voltage] logic_to_voltage
+A_SYNC [sync_out] [sync_voltage] logic_to_voltage
+
+V_SUPPLY v5 0 5
+R_P_HIGH gate_p_high gate_p 1
+R_P_LOW gate_p_low gate_n 1
+R_N_HIGH gate_n_high gate_p_n 1
+R_N_LOW gate_n_low gate_n_n 1
+XQ_P_HIGH drv_out_p gate_p v5 AO3401A
+XQ_P_LOW drv_out_p gate_n 0 AO3400
+XQ_N_HIGH drv_out_n gate_p_n v5 AO3401A
+XQ_N_LOW drv_out_n gate_n_n 0 AO3400
+L_P drv_out_p spkr_p 10u
+L_N drv_out_n spkr_n 10u
+R_SPKR spkr_n spkr_p 8
+C_P spkr_p 0 2u
+C_N 0 spkr_n 2u
+
+.options method=gear reltol=0.01 abstol=1n vntol=10u trtol=8
+.control
+set noaskquit
+save v(spkr_p) v(spkr_n) v(dac_voltage) v(sync_voltage)
+tran 10n 2m 0 10n
+write mp3_2ms.raw
+quit
+.endc
+.end

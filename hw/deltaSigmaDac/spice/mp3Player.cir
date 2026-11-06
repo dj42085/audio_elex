@@ -1,0 +1,17 @@
+.title KiCad schematic
+.include "/home/dguyon/audio_elex/audio_elex/common/TC4427.lib"
+.include "/home/dguyon/audio_elex/audio_elex/common/basic.lib"
+.save all
+.options method=gear abstol=1n vntol=10u trtol=7 itl4=100
+V3 /Driver/inn 0 PULSE( 3.3 0 2n 2n 2n 5u 10u ) 
+V2 /Driver/inp 0 PULSE( 3.3 0 100n 2n 2n 4.8u 10u ) 
+C1 /Driver/v5p0 0 10u
+V1 /Driver/v5p0 0 DC 5 
+R2 /Driver/drvp /Driver/gatep 1
+C2 /Driver/v5p0 0 0.1u
+XQ2 /Driver/spkrp /Driver/gatep /Driver/v5p0 AO3401A
+XQ1 /Driver/spkrp /Driver/gaten 0 AO3400
+R1 /Driver/spkrp 0 8
+R3 /Driver/drvn /Driver/gaten 1
+XU1 /Driver/inp 0 /Driver/inn /Driver/drvn /Driver/v5p0 /Driver/drvp TC4427_top
+.end
