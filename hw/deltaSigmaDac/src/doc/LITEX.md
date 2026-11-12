@@ -11,6 +11,12 @@ stream's `data`, `valid`, and `ready` signals to `sample_data`,
 `sample_valid`, and `sample_ready`. The CSR field must be in the DAC clock
 domain. Set `test_mode=0` for streaming and `test_mode=1` for the sine test.
 
+The Arty S7 audio SoC exposes the DAC stream to firmware with `dac_sample_data`
+and `dac_sample_ready` CSRs. Firmware should poll `dac_sample_ready` before
+writing each unsigned PCM sample to `dac_sample_data`. A 256-sample system
+clock-domain FIFO buffers writes before the stream crosses into the DAC clock
+domain.
+
 Samples are unsigned 16-bit values. The input is an unbuffered ready/valid
 interface; `sample_ready` pulses once every `SAMPLE_PERIOD_CYCLES` clocks and
 accepts a sample on that clock when `sample_valid` is asserted. Keep
