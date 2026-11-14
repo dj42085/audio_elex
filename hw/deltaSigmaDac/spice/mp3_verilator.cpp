@@ -4,11 +4,13 @@
 #include <iomanip>
 #include <iostream>
 #include <iterator>
+#include <memory>
 #include <string>
 #include <vector>
 
 #include "Vdelta_sigma_dac_stream.h"
 #include "verilated.h"
+#include "verilated_vcd_c.h"
 
 extern "C" {
 #include "helix_mp3.h"
@@ -16,8 +18,9 @@ extern "C" {
 
 namespace {
 
-constexpr uint64_t kSimulationDurationNs = 2'000'000;
+constexpr uint64_t kSimulationDurationNs = 1'000'000'000;
 constexpr uint64_t kClockPeriodNs = 20;
+constexpr uint64_t kPsPerNs = 1'000;
 constexpr uint32_t kSamplePeriodCycles = 1134;
 constexpr uint32_t kResetCycles = 5;
 constexpr size_t kPcmChannels = 2;
@@ -72,8 +75,9 @@ void write_vector_row(std::ofstream &out, uint64_t time_ns, uint8_t state)
 int main(int argc, char **argv)
 {
     Verilated::commandArgs(argc, argv);
-    if (argc != 3) {
-        std::cerr << "Usage: " << argv[0] << " input.mp3 output.vec\n";
+    if (argc < 3 || argc > 4) {
+        std::cerr << "Usage: " << argv[0]
+                  << " input.mp3 output.vec [output.vcd]\n";
         return 2;
     }
 
@@ -119,7 +123,11 @@ int main(int argc, char **argv)
     }
     vector_file << "* Verilator DAC outputs: dac_out pwm_high pwm_low "
                    "pwm_n_high pwm_n_low sync_out\n"
-                << "* Generated from the first 2 ms of " << argv[1] << '\n';
+                << "* Generated from the first 1 s of " << argv[1] << '\n';
+
+    std::unique_ptr<VerilatedVcdC> trace;
+    if (argc == 4)
+        Verilated::traceEverOn(true);
 
     Vdelta_sigma_dac_stream top;
     top.clk = 0;
@@ -127,7 +135,18 @@ int main(int argc, char **argv)
     top.test_mode = 0;
     top.sample_data = 0;
     top.sample_valid = 0;
+    if (argc == 4) {
+        trace = std::make_unique<VerilatedVcdC>();
+        top.trace(trace.get(), 99);
+        trace->open(argv[3]);
+        if (!trace->isOpen()) {
+            std::cerr << "Cannot create VCD trace file: " << argv[3] << '\n';
+            return 1;
+        }
+    }
     top.eval();
+    if (trace)
+        trace->dump(0);
 
     uint8_t last_state = output_state(top);
     write_vector_row(vector_file, 0, last_state);
@@ -147,11 +166,25 @@ int main(int argc, char **argv)
             top.sample_data =
                 static_cast<uint16_t>(static_cast<int16_t>(mixed)) ^ 0x8000u;
         }
+        else {
+            top.sample_data = 0;
+        }
+
         top.eval();
         const bool accepted = have_sample && top.sample_ready;
+        if (accepted)
+            std::cout << "Streaming PCM frame " << pcm_frame
+                      << " at cycle " << cycle
+                      << "; sample_data = 0x" << std::hex
+                      << top.sample_data << std::dec << '\n';
+        if (trace)
+            trace->dump((cycle * kClockPeriodNs + kClockPeriodNs / 2) *
+                kPsPerNs);
 
         top.clk = 1;
         top.eval();
+        if (trace)
+            trace->dump((cycle + 1) * kClockPeriodNs * kPsPerNs);
         if (accepted)
             ++pcm_frame;
 
@@ -164,6 +197,8 @@ int main(int argc, char **argv)
     }
 
     top.final();
+    if (trace)
+        trace->close();
     vector_file.close();
     if (!vector_file) {
         std::cerr << "Failed writing XSPICE vector file: " << argv[2] << '\n';
@@ -173,6 +208,9 @@ int main(int argc, char **argv)
     std::cout << "Decoded " << decoded_frames << " PCM frames at "
               << sample_rate << " Hz; streamed " << pcm_frame
               << " frames through " << simulation_cycles
-              << " DAC clocks (2 ms).\nWrote " << argv[2] << '\n';
+              << " DAC clocks (1 s).\nWrote " << argv[2];
+    if (trace)
+        std::cout << " and " << argv[3];
+    std::cout << '\n';
     return 0;
 }
