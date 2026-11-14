@@ -132,7 +132,11 @@ int main(int argc, char **argv)
     Vdelta_sigma_dac_stream top;
     top.clk = 0;
     top.rst_n = 0;
+    #ifdef TEST_MODE
+    top.test_mode = 1;
+    #else
     top.test_mode = 0;
+    #endif
     top.sample_data = 0;
     top.sample_valid = 0;
     if (argc == 4) {
@@ -172,11 +176,13 @@ int main(int argc, char **argv)
 
         top.eval();
         const bool accepted = have_sample && top.sample_ready;
+        #ifdef VERBOSE
         if (accepted)
             std::cout << "Streaming PCM frame " << pcm_frame
                       << " at cycle " << cycle
                       << "; sample_data = 0x" << std::hex
                       << top.sample_data << std::dec << '\n';
+        #endif
         if (trace)
             trace->dump((cycle * kClockPeriodNs + kClockPeriodNs / 2) *
                 kPsPerNs);
