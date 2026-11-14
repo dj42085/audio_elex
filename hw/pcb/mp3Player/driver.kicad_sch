@@ -2731,10 +2731,10 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "06d8a8d6-d522-4572-9fa7-9ad923cc0be8")
-		(property "Reference" "R6"
+		(property "Reference" "R5"
 			(at 199.39 100.3299 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2798,7 +2798,7 @@
 		(instances
 			(project "mp3Player"
 				(path "/1f38a592-abe3-4278-a574-53f7c00aef12/47ec0d90-82db-40e6-816d-633a4ca5fbcb"
-					(reference "R6")
+					(reference "R5")
 					(unit 1)
 				)
 			)
@@ -2816,7 +2816,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "0bd7d464-8580-47de-9485-bdf273c65865")
-		(property "Reference" "R3"
+		(property "Reference" "R2"
 			(at 119.38 69.85 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2836,7 +2836,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 119.38 77.978 90)
 			(hide yes)
 			(show_name no)
@@ -2878,7 +2878,7 @@
 		(instances
 			(project "mp3Player"
 				(path "/1f38a592-abe3-4278-a574-53f7c00aef12/47ec0d90-82db-40e6-816d-633a4ca5fbcb"
-					(reference "R3")
+					(reference "R2")
 					(unit 1)
 				)
 			)
@@ -2896,7 +2896,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "0eb4cc2e-df4c-4f29-b5ab-301803e74ed4")
-		(property "Reference" "Q1"
+		(property "Reference" "Q2"
 			(at 139.7 74.9299 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3007,7 +3007,7 @@
 		(instances
 			(project "mp3Player"
 				(path "/1f38a592-abe3-4278-a574-53f7c00aef12/47ec0d90-82db-40e6-816d-633a4ca5fbcb"
-					(reference "Q1")
+					(reference "Q2")
 					(unit 1)
 				)
 			)
@@ -3107,7 +3107,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "177e4389-85a3-4321-9f88-698dea9c7e1d")
-		(property "Reference" "R5"
+		(property "Reference" "R4"
 			(at 119.38 152.4 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3169,7 +3169,7 @@
 		(instances
 			(project "mp3Player"
 				(path "/1f38a592-abe3-4278-a574-53f7c00aef12/47ec0d90-82db-40e6-816d-633a4ca5fbcb"
-					(reference "R5")
+					(reference "R4")
 					(unit 1)
 				)
 			)
@@ -3331,7 +3331,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "1d281a28-101f-4411-a6b3-2c1b58a13820")
-		(property "Reference" "#PWR03"
+		(property "Reference" "#PWR05"
 			(at 135.89 95.25 0)
 			(hide yes)
 			(show_name no)
@@ -3391,7 +3391,7 @@
 		(instances
 			(project "mp3Player"
 				(path "/1f38a592-abe3-4278-a574-53f7c00aef12/47ec0d90-82db-40e6-816d-633a4ca5fbcb"
-					(reference "#PWR03")
+					(reference "#PWR05")
 					(unit 1)
 				)
 			)
@@ -3553,7 +3553,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "3cf524e9-e689-44d6-bb26-d987f950ce2a")
-		(property "Reference" "L1"
+		(property "Reference" "L2"
 			(at 176.53 58.42 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3573,7 +3573,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Inductor_SMD:L_Coilcraft_LPS3314"
 			(at 176.53 63.5 0)
 			(hide yes)
 			(show_name no)
@@ -3615,7 +3615,7 @@
 		(instances
 			(project "mp3Player"
 				(path "/1f38a592-abe3-4278-a574-53f7c00aef12/47ec0d90-82db-40e6-816d-633a4ca5fbcb"
-					(reference "L1")
+					(reference "L2")
 					(unit 1)
 				)
 			)
@@ -3633,7 +3633,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "405e1070-802c-469b-8975-c9de77bea124")
-		(property "Reference" "#PWR010"
+		(property "Reference" "#PWR06"
 			(at 135.89 176.53 0)
 			(hide yes)
 			(show_name no)
@@ -3693,7 +3693,7 @@
 		(instances
 			(project "mp3Player"
 				(path "/1f38a592-abe3-4278-a574-53f7c00aef12/47ec0d90-82db-40e6-816d-633a4ca5fbcb"
-					(reference "#PWR010")
+					(reference "#PWR06")
 					(unit 1)
 				)
 			)
@@ -3711,7 +3711,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "456de721-8068-4cd3-beec-c985ff65d4de")
-		(property "Reference" "Q2"
+		(property "Reference" "Q1"
 			(at 139.7 54.6101 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -3822,7 +3822,7 @@
 		(instances
 			(project "mp3Player"
 				(path "/1f38a592-abe3-4278-a574-53f7c00aef12/47ec0d90-82db-40e6-816d-633a4ca5fbcb"
-					(reference "Q2")
+					(reference "Q1")
 					(unit 1)
 				)
 			)
@@ -4004,7 +4004,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "5fc74d54-68e4-4649-ab95-10ef12343e5f")
-		(property "Reference" "#PWR01"
+		(property "Reference" "#PWR07"
 			(at 177.8 107.95 0)
 			(hide yes)
 			(show_name no)
@@ -4065,7 +4065,7 @@
 		(instances
 			(project "mp3Player"
 				(path "/1f38a592-abe3-4278-a574-53f7c00aef12/47ec0d90-82db-40e6-816d-633a4ca5fbcb"
-					(reference "#PWR01")
+					(reference "#PWR07")
 					(unit 1)
 				)
 			)
@@ -4083,7 +4083,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "69779297-d46f-4b08-bb69-b335481a714d")
-		(property "Reference" "#PWR05"
+		(property "Reference" "#PWR03"
 			(at 58.42 45.72 0)
 			(hide yes)
 			(show_name no)
@@ -4143,7 +4143,7 @@
 		(instances
 			(project "mp3Player"
 				(path "/1f38a592-abe3-4278-a574-53f7c00aef12/47ec0d90-82db-40e6-816d-633a4ca5fbcb"
-					(reference "#PWR05")
+					(reference "#PWR03")
 					(unit 1)
 				)
 			)
@@ -4290,7 +4290,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "7557b335-c1b5-4370-bffe-c36a2a456367")
-		(property "Reference" "L2"
+		(property "Reference" "L1"
 			(at 172.72 140.97 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4310,7 +4310,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Inductor_SMD:L_Coilcraft_LPS3314"
 			(at 172.72 146.05 0)
 			(hide yes)
 			(show_name no)
@@ -4352,7 +4352,7 @@
 		(instances
 			(project "mp3Player"
 				(path "/1f38a592-abe3-4278-a574-53f7c00aef12/47ec0d90-82db-40e6-816d-633a4ca5fbcb"
-					(reference "L2")
+					(reference "L1")
 					(unit 1)
 				)
 			)
@@ -4499,7 +4499,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c103ff79-7dbf-4c59-b8c3-6abecd91f456")
-		(property "Reference" "C2"
+		(property "Reference" "C3"
 			(at 80.01 25.3999 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4563,7 +4563,7 @@
 		(instances
 			(project "mp3Player"
 				(path "/1f38a592-abe3-4278-a574-53f7c00aef12/47ec0d90-82db-40e6-816d-633a4ca5fbcb"
-					(reference "C2")
+					(reference "C3")
 					(unit 1)
 				)
 			)
@@ -4581,7 +4581,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c6e3eb07-82ac-4369-8997-0515fee751e9")
-		(property "Reference" "R4"
+		(property "Reference" "R3"
 			(at 119.38 129.54 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4601,7 +4601,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0201_0603Metric"
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 119.38 137.668 90)
 			(hide yes)
 			(show_name no)
@@ -4643,7 +4643,7 @@
 		(instances
 			(project "mp3Player"
 				(path "/1f38a592-abe3-4278-a574-53f7c00aef12/47ec0d90-82db-40e6-816d-633a4ca5fbcb"
-					(reference "R4")
+					(reference "R3")
 					(unit 1)
 				)
 			)
@@ -4661,7 +4661,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e2e18aad-9e21-41d4-a19a-954f17a0f772")
-		(property "Reference" "R2"
+		(property "Reference" "R1"
 			(at 119.38 46.99 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4681,7 +4681,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 119.38 55.118 90)
 			(hide yes)
 			(show_name no)
@@ -4723,7 +4723,7 @@
 		(instances
 			(project "mp3Player"
 				(path "/1f38a592-abe3-4278-a574-53f7c00aef12/47ec0d90-82db-40e6-816d-633a4ca5fbcb"
-					(reference "R2")
+					(reference "R1")
 					(unit 1)
 				)
 			)
@@ -4741,7 +4741,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e46fff5c-703f-45bf-9d8d-ac635dfab075")
-		(property "Reference" "C3"
+		(property "Reference" "C2"
 			(at 63.5 108.3309 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -4805,7 +4805,7 @@
 		(instances
 			(project "mp3Player"
 				(path "/1f38a592-abe3-4278-a574-53f7c00aef12/47ec0d90-82db-40e6-816d-633a4ca5fbcb"
-					(reference "C3")
+					(reference "C2")
 					(unit 1)
 				)
 			)
