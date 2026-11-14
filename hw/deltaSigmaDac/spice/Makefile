@@ -9,6 +9,7 @@ RTL_DIR := $(REPO_ROOT)/hw/deltaSigmaDac/src
 HELIX_DIR := $(REPO_ROOT)/soc/demo/helix_mp3/src
 MP3_FILE ?= $(REPO_ROOT)/soc/prog/crickets_clipped.mp3
 VCD_FILE ?=
+MACROS ?= null
 VECTOR_FILE := $(SPICE_DIR)/mp3_1s.vec
 BUILD_DIR := $(SPICE_DIR)/build/mp3_verilator$(if $(filter 1,$(DEBUG)),_debug)
 HELIX_OBJ_DIR := $(BUILD_DIR)/helix
@@ -40,7 +41,7 @@ $(SIMULATOR): $(RTL_SOURCES) mp3_verilator.cpp $(HELIX_OBJECTS)
 		$(if $(filter 1,$(DEBUG)),-MAKEFLAGS OPT_FAST=-O0) \
 		--top-module delta_sigma_dac_stream \
 		--Mdir "$(VERILATOR_DIR)" \
-		-CFLAGS "$(if $(filter 1,$(DEBUG)),-g -O0) -std=c++17 -I$(HELIX_DIR) -I$(HELIX_DIR)/libhelix/pub -I$(HELIX_DIR)/libhelix/real" \
+		-CFLAGS "$(if $(filter 1,$(DEBUG)),-g -O0 -D$(MACROS)) -std=c++17 -I$(HELIX_DIR) -I$(HELIX_DIR)/libhelix/pub -I$(HELIX_DIR)/libhelix/real" \
 		$(RTL_SOURCES) "$(SPICE_DIR)/mp3_verilator.cpp" $(HELIX_OBJECTS)
 
 mp3-vector: $(SIMULATOR)
@@ -50,4 +51,4 @@ ngspice-test: mp3-vector
 	cd "$(SPICE_DIR)" && $(NGSPICE) -b mp3_2ms.cir
 
 clean:
-	rm -rf "$(BUILD_DIR)" "$(VECTOR_FILE)" "$(SPICE_DIR)/mp3_2ms.raw" *.vcd
+	rm -rf "$(BUILD_DIR)" "$(VECTOR_FILE)" "$(SPICE_DIR)/mp3_2ms.raw" *.vcd *.vec
