@@ -1467,18 +1467,6 @@
 		(uuid "420c9463-b001-40b0-901b-4f4ccfef12c0")
 	)
 	(junction
-		(at 128.27 96.52)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "9876ff85-0890-44a9-a124-c80defccc869")
-	)
-	(junction
-		(at 135.89 99.06)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "adbec0af-e7cb-441e-aafa-1342702a80f0")
-	)
-	(junction
 		(at 64.77 115.57)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -1568,26 +1556,6 @@
 	)
 	(wire
 		(pts
-			(xy 167.64 99.06) (xy 135.89 99.06)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "2ebda82c-9137-4f69-9b61-e367fa8b1eb4")
-	)
-	(wire
-		(pts
-			(xy 128.27 96.52) (xy 167.64 96.52)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "41941232-b300-4642-8261-cb12916807f2")
-	)
-	(wire
-		(pts
 			(xy 57.15 115.57) (xy 64.77 115.57)
 		)
 		(stroke
@@ -1638,26 +1606,6 @@
 	)
 	(wire
 		(pts
-			(xy 196.85 97.79) (xy 259.08 97.79)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "62067bfe-6fff-4ce6-9945-e1976b48e70a")
-	)
-	(wire
-		(pts
-			(xy 203.2 95.25) (xy 259.08 95.25)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "630e5c6f-fd5c-4211-a2d6-20d746d07a9a")
-	)
-	(wire
-		(pts
 			(xy 147.32 80.01) (xy 147.32 90.17)
 		)
 		(stroke
@@ -1678,7 +1626,7 @@
 	)
 	(wire
 		(pts
-			(xy 135.89 99.06) (xy 114.3 99.06)
+			(xy 114.3 99.06) (xy 167.64 99.06)
 		)
 		(stroke
 			(width 0)
@@ -1715,6 +1663,16 @@
 			(type default)
 		)
 		(uuid "927cfa29-49db-4579-8823-6f6ebf68f9c4")
+	)
+	(wire
+		(pts
+			(xy 196.85 92.71) (xy 259.08 92.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9a5dabb4-7a91-4096-a6d4-d568682ce99f")
 	)
 	(wire
 		(pts
@@ -1758,16 +1716,6 @@
 	)
 	(wire
 		(pts
-			(xy 128.27 73.66) (xy 128.27 96.52)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "abada2ec-c05f-4cef-86ac-0c48df3a6ccc")
-	)
-	(wire
-		(pts
 			(xy 114.3 95.25) (xy 57.15 95.25)
 		)
 		(stroke
@@ -1775,16 +1723,6 @@
 			(type default)
 		)
 		(uuid "b1dd62af-1c3d-4048-95e7-db4e4beb7848")
-	)
-	(wire
-		(pts
-			(xy 203.2 91.44) (xy 203.2 95.25)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c0eee755-ce4e-4508-ab13-c73213710afb")
 	)
 	(wire
 		(pts
@@ -1798,23 +1736,13 @@
 	)
 	(wire
 		(pts
-			(xy 196.85 91.44) (xy 203.2 91.44)
+			(xy 196.85 95.25) (xy 259.08 95.25)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "c1f04d26-62f5-494f-b9ce-bf9e4ec94df4")
-	)
-	(wire
-		(pts
-			(xy 135.89 77.47) (xy 135.89 99.06)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c2f7d490-64ef-4bdc-8d77-cf8b1f3fa66a")
 	)
 	(wire
 		(pts
@@ -1838,7 +1766,7 @@
 	)
 	(wire
 		(pts
-			(xy 116.84 96.52) (xy 128.27 96.52)
+			(xy 116.84 96.52) (xy 167.64 96.52)
 		)
 		(stroke
 			(width 0)
@@ -1969,7 +1897,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "TestPoint"
+		(property "Value" "INP"
 			(at 146.05 71.6279 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2027,7 +1955,7 @@
 	)
 	(symbol
 		(lib_id "2026-11-14_05-11-23:S2B-XH-A")
-		(at 259.08 95.25 0)
+		(at 259.08 92.71 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2038,7 +1966,7 @@
 		(fields_autoplaced yes)
 		(uuid "2f75ee36-07ca-4e2b-8db6-ce631fcc630b")
 		(property "Reference" "J2"
-			(at 273.05 95.2499 0)
+			(at 273.05 92.7099 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2049,7 +1977,7 @@
 			)
 		)
 		(property "Value" "S2B-XH-A"
-			(at 273.05 97.7899 0)
+			(at 273.05 95.2499 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2060,7 +1988,7 @@
 			)
 		)
 		(property "Footprint" "CONN_S2B-XH-A_JST"
-			(at 259.08 95.25 0)
+			(at 259.08 92.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2072,7 +2000,7 @@
 			)
 		)
 		(property "Datasheet" "S2B-XH-A"
-			(at 259.08 95.25 0)
+			(at 259.08 92.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2084,7 +2012,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 259.08 95.25 0)
+			(at 259.08 92.71 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2132,7 +2060,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "TestPoint"
+		(property "Value" "SYNC_OUT"
 			(at 100.33 71.6279 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2183,85 +2111,6 @@
 			(project "mp3Player"
 				(path "/1f38a592-abe3-4278-a574-53f7c00aef12"
 					(reference "TP2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 135.89 77.47 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "721b59d9-d18c-488d-b23d-ef230f6f4bc7")
-		(property "Reference" "TP4"
-			(at 138.43 72.8979 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "TestPoint"
-			(at 138.43 75.4379 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_Keystone_5019_Miniature"
-			(at 140.97 77.47 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 140.97 77.47 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "test point"
-			(at 135.89 77.47 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "8777449b-d432-49eb-b846-716efc8f8975")
-		)
-		(instances
-			(project "mp3Player"
-				(path "/1f38a592-abe3-4278-a574-53f7c00aef12"
-					(reference "TP4")
 					(unit 1)
 				)
 			)
@@ -2628,7 +2477,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "TestPoint"
+		(property "Value" "INN"
 			(at 149.86 77.9779 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2707,7 +2556,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "TestPoint"
+		(property "Value" "DAC_OUT"
 			(at 82.55 71.6279 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2876,85 +2725,6 @@
 			)
 		)
 	)
-	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 128.27 73.66 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "fae8c8fb-8f63-43da-afe9-e21316c362f0")
-		(property "Reference" "TP3"
-			(at 130.81 69.0879 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "TestPoint"
-			(at 130.81 71.6279 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_Keystone_5019_Miniature"
-			(at 133.35 73.66 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 133.35 73.66 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "test point"
-			(at 128.27 73.66 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "e997b22d-519f-41af-8778-57cac6951f28")
-		)
-		(instances
-			(project "mp3Player"
-				(path "/1f38a592-abe3-4278-a574-53f7c00aef12"
-					(reference "TP3")
-					(unit 1)
-				)
-			)
-		)
-	)
 	(sheet
 		(at 167.64 85.09)
 		(size 29.21 18.415)
@@ -3034,7 +2804,7 @@
 			)
 		)
 		(pin "spkrn" output
-			(at 196.85 97.79 0)
+			(at 196.85 92.71 0)
 			(uuid "5663948e-aa09-4d80-9cce-c970f7685ffc")
 			(effects
 				(font
@@ -3044,7 +2814,7 @@
 			)
 		)
 		(pin "spkrp" output
-			(at 196.85 91.44 0)
+			(at 196.85 95.25 0)
 			(uuid "774d50fc-34cd-4534-a011-dd76552ed3c7")
 			(effects
 				(font

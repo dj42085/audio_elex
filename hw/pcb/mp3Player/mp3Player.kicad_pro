@@ -516,6 +516,19 @@
         "via_diameter": 0.6,
         "via_drill": 0.3,
         "wire_width": 6
+      },
+      {
+        "clearance": 0.2,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "Power",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 0,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 2.0,
+        "tuning_profile": "",
+        "via_diameter": 0.6,
+        "via_drill": 0.3
       }
     ],
     "meta": {
@@ -673,7 +686,7 @@
         "uuid": "1f38a592-abe3-4278-a574-53f7c00aef12"
       }
     ],
-    "used_designators": "#GND1-6,#PWR1-10,C1-10,J1-3,L1-2,PMOD1,Q1-4,R1-7,TP1-6,U1-3,V1-3",
+    "used_designators": "#GND1-6,#PWR1-10,C1-10,J1-3,L1-2,PMOD1,Q1-5,R1-7,TP1-6,U1-3,V1-3",
     "variants": []
   },
   "sheets": [
