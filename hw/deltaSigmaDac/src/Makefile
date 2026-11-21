@@ -8,7 +8,7 @@ STREAM_TEST_SOURCES := tb_delta_sigma_dac_stream.v delta_sigma_dac_stream.v ds_t
 
 .PHONY: all simulate clean
 
-all: sine_stim_test delta_sigma_stream_test
+all: sine_stim_test delta_sigma_stream_test delta_sigma_stream_no_rom_test
 
 sine_stim_test: $(VERILOG_SOURCES)
 	$(IVERILOG) -D$(MACROS) -s tb_sine_stimulus -o sine_stim_test $(VERILOG_SOURCES)
@@ -16,11 +16,15 @@ sine_stim_test: $(VERILOG_SOURCES)
 delta_sigma_stream_test: $(STREAM_TEST_SOURCES) sine_stimulus_unsigned.hex
 	$(IVERILOG) -g2012 -s tb_delta_sigma_dac_stream -o delta_sigma_stream_test $(STREAM_TEST_SOURCES)
 
-simulate: sine_stim_test delta_sigma_stream_test
+delta_sigma_stream_no_rom_test: $(STREAM_TEST_SOURCES)
+	$(IVERILOG) -g2012 -s tb_delta_sigma_dac_stream_no_rom -o delta_sigma_stream_no_rom_test $(STREAM_TEST_SOURCES)
+
+simulate: sine_stim_test delta_sigma_stream_test delta_sigma_stream_no_rom_test
 	$(VVP) sine_stim_test
 	$(VVP) delta_sigma_stream_test
+	cd / && $(VVP) "$(CURDIR)/delta_sigma_stream_no_rom_test"
 #	gtkwave *.vcd
 
 clean:
-	rm -f sine_stim_test delta_sigma_stream_test
+	rm -f sine_stim_test delta_sigma_stream_test delta_sigma_stream_no_rom_test
 	rm -f *.vcd

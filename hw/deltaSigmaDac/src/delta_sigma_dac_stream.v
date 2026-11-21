@@ -2,6 +2,7 @@
 
 module delta_sigma_dac_stream #(
     parameter ROM_FILE = "sine_stimulus_unsigned.hex",
+    parameter integer USE_ROM = 1,
     parameter integer SAMPLE_COUNT = 89,
     parameter integer SAMPLE_PERIOD_CYCLES = 1134
 ) (
@@ -29,19 +30,22 @@ module delta_sigma_dac_stream #(
     reg rom_sample_valid;
     reg test_mode_d;
 
+    wire rom_mode = test_mode && USE_ROM;
     wire [15:0] selected_sample_data;
     wire selected_sample_valid;
 
-    assign sample_ready = rst_n && !test_mode &&
+    assign sample_ready = rst_n && !rom_mode &&
                           (sample_clock_count == SAMPLE_PERIOD_CYCLES - 1);
-    assign selected_sample_data = test_mode ? rom_sample_data : sample_data;
-    assign selected_sample_valid = test_mode
+    assign selected_sample_data = rom_mode ? rom_sample_data : sample_data;
+    assign selected_sample_valid = rom_mode
         ? rom_sample_valid
         : (sample_valid && sample_ready);
 
-    initial begin
-        $readmemh(ROM_FILE, stimulus_mem);
-    end
+    generate
+        if (USE_ROM) begin : gen_stimulus_rom
+            initial $readmemh(ROM_FILE, stimulus_mem);
+        end
+    endgenerate
 
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
@@ -50,12 +54,12 @@ module delta_sigma_dac_stream #(
             sample_clock_count <= 32'd0;
             rom_sample_valid <= 1'b0;
             test_mode_d <= 1'b0;
-        end else if (test_mode != test_mode_d) begin
-            test_mode_d <= test_mode;
+        end else if (rom_mode != test_mode_d) begin
+            test_mode_d <= rom_mode;
             sample_index <= {ADDR_WIDTH{1'b0}};
             sample_clock_count <= 32'd0;
             rom_sample_valid <= 1'b0;
-        end else if (test_mode) begin
+        end else if (rom_mode) begin
             if (sample_clock_count == SAMPLE_PERIOD_CYCLES - 1) begin
                 sample_clock_count <= 32'd0;
                 rom_sample_data <= stimulus_mem[sample_index];
@@ -69,7 +73,7 @@ module delta_sigma_dac_stream #(
                 rom_sample_valid <= 1'b0;
             end
         end else begin
-            test_mode_d <= test_mode;
+            test_mode_d <= rom_mode;
             if (sample_clock_count == SAMPLE_PERIOD_CYCLES - 1)
                 sample_clock_count <= 32'd0;
             else

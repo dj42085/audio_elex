@@ -88,3 +88,46 @@ module tb_delta_sigma_dac_stream;
         end
     end
 endmodule
+
+module tb_delta_sigma_dac_stream_no_rom;
+    reg clk = 1'b0;
+    reg rst_n = 1'b0;
+    reg test_mode = 1'b0;
+    reg [15:0] sample_data = 16'hCAFE;
+    reg sample_valid = 1'b1;
+    wire sample_ready;
+
+    always #10 clk = ~clk;
+
+    delta_sigma_dac_stream #(
+        .USE_ROM(0),
+        .SAMPLE_PERIOD_CYCLES(4)
+    ) dut (
+        .clk(clk),
+        .rst_n(rst_n),
+        .test_mode(test_mode),
+        .sample_data(sample_data),
+        .sample_valid(sample_valid),
+        .sample_ready(sample_ready),
+        .dac_out(),
+        .pwm_high(),
+        .pwm_low(),
+        .pwm_n_high(),
+        .pwm_n_low(),
+        .sync_out()
+    );
+
+    initial begin
+        repeat (2) @(negedge clk);
+        rst_n = 1'b1;
+        test_mode = 1'b1;
+
+        while (!sample_ready)
+            @(negedge clk);
+        @(posedge clk);
+        #1;
+        if (dut.u_ds_top.ualin.current_sample !== sample_data)
+            $fatal(1, "Streaming sample was not forwarded with ROM disabled");
+        $finish;
+    end
+endmodule

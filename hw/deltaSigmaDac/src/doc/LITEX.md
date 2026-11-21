@@ -23,13 +23,17 @@ accepts a sample on that clock when `sample_valid` is asserted. Keep
 `sample_valid` and `sample_data` stable until the handshake. The default
 cadence is about 44.1 kHz at 50 MHz.
 
-The wrapper always loads `ROM_FILE` (default `sine_stimulus_unsigned.hex`)
-and repeats the configured `SAMPLE_COUNT` entries at intervals of
-`SAMPLE_PERIOD_CYCLES` clocks while `test_mode` is asserted. The ROM address
-and sample cadence restart when the mode changes. In test mode `sample_ready`
-is low and streaming input is ignored. Ensure the hex file is included as a
-memory initialization file and available at the path specified by `ROM_FILE`
-in the FPGA build.
+The wrapper loads `ROM_FILE` (default `sine_stimulus_unsigned.hex`) when
+`USE_ROM` is enabled (the default) and repeats the configured `SAMPLE_COUNT`
+entries at intervals of `SAMPLE_PERIOD_CYCLES` clocks while `test_mode` is
+asserted. The ROM address and sample cadence restart when the mode changes.
+In test mode `sample_ready` is low and streaming input is ignored. Ensure the
+hex file is included as a memory initialization file and available at the path
+specified by `ROM_FILE` in builds with `USE_ROM` enabled.
+
+The Arty S7 build enables the ROM for its internal sine test. The CMOD S7
+build sets `USE_ROM=0`, so it does not require or include the stimulus hex
+file; its DAC remains in stream-input mode even if `test_mode` is asserted.
 
 `rst_n` is active-low. LiteX designs with active-high reset signals should
 connect the inverted reset for the current clock domain.
