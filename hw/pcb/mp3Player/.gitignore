@@ -1,0 +1,9 @@
+fab
+devices
+*.zip
+*.txt
+*.wbk
+*.cir
+*.kicad_dru
+*.kicad_prl
+.history

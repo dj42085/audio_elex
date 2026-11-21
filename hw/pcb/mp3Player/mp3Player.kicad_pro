@@ -546,7 +546,7 @@
       "plot": "fab/",
       "pos_files": "",
       "specctra_dsn": "",
-      "step": "",
+      "step": "fab/mp3Player.step",
       "svg": "",
       "vrml": ""
     },
