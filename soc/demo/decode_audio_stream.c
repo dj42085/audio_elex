@@ -3,6 +3,8 @@
 
 #include <generated/csr.h>
 
+#define HELIX_MP3_IMPLEMENTATION
+
 #include "decode_audio_stream.h"
 #include "helix_mp3.h"
 

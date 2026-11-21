@@ -191,8 +191,9 @@ static void console_service(void)
 		helloc_cmd();
 	else if(strcmp(token, "sine_test") == 0)
 		sine_test();
+		
 	else if(strcmp(token, "decode_audio_stream") == 0)
-		decode_audio_stream();
+		decode_audio_stream(); 
 #ifdef WITH_CXX
 	else if(strcmp(token, "hellocpp") == 0)
 		hellocpp_cmd();
