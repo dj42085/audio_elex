@@ -145,7 +145,7 @@ class Dac(LiteXModule):
 class BaseSoC(SoCCore):
     def __init__(self, variant="s7-25", sys_clk_freq=100e6,
         with_spi_flash  = False,
-        with_led_chaser = True,
+        with_led_chaser = False,
         with_buttons    = False,
         with_switches   = False,
         dac_src         = DAC_SOURCE_DIR,
@@ -189,6 +189,8 @@ class BaseSoC(SoCCore):
             from litespi.modules import MX25L3273E
             from litespi.opcodes import SpiNorFlashOpCodes as Codes
             self.add_spi_flash(mode="4x", module=MX25L3273E(Codes.READ_1_1_1), with_master=True)
+            # 1.5MB offset to avoid overwriting the LiteX BIOS in SPI flash.
+            self.add_constant("FLASH_BOOT_ADDRESS", self.bus.regions["spiflash"].origin + 0x00180000)  
 
         # Leds -------------------------------------------------------------------------------------
         if with_led_chaser:
